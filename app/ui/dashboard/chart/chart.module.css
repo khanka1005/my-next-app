@@ -1,0 +1,10 @@
+.container{
+    height:450px;
+}
+.title{
+    font-size:23px;
+    margin-top:10px;
+    margin-bottom:20px;
+    font-weight:200;
+    color:var(--textSoft);
+}
