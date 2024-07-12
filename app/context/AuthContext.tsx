@@ -1,12 +1,13 @@
 'use client'
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useRouter, usePathname } from 'next/navigation';
 
 interface AuthContextType {
   user: any;
   googleSignIn: () => Promise<void>;
+  emailSignIn: (email: string, password: string) => Promise<void>;
   logOut: () => Promise<void>;
 }
 
@@ -24,6 +25,15 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       router.push('/dashboard');
     } catch (error) {
       console.error("Error during sign in:", error);
+    }
+  };
+
+  const emailSignIn = async (email: string, password: string) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push('/dashboard');
+    } catch (error) {
+      console.error("Error during email sign in:", error);
     }
   };
 
@@ -47,7 +57,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   }, [pathname, router]);
 
   return (
-    <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
+    <AuthContext.Provider value={{ user, googleSignIn, emailSignIn, logOut }}>
       {children}
     </AuthContext.Provider>
   );

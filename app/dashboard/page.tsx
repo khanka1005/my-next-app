@@ -6,8 +6,8 @@ import Chart from "../ui/dashboard/chart/chart"
 import { FaUser, FaShopify } from "react-icons/fa";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
-const Dashboard = () => {
 
+const Dashboard = async () => {
     return (
     
      <div className={styles.wrapper}>

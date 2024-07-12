@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/ui/dashboard/sidebar/menuLink/menuLink.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/ui/dashboard/sidebar/menuLink/menuLink.jsx", "app/test/page.jsx"],
   "exclude": ["node_modules"]
 }
