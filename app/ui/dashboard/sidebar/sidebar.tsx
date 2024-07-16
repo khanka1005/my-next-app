@@ -2,15 +2,14 @@
 'use client'
 
 import React,{ useEffect } from 'react';
-
 import MenuLink from './menuLink/menuLink';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
 import { MdDashboard,
    MdSupervisedUserCircle,
     MdLogout,
      MdShoppingBag } from 'react-icons/md';
-
-import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/context/AuthContext';
 import styles from './sidebar.module.css';
 

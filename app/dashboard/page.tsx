@@ -1,20 +1,19 @@
-'use client'
+'use client';
 
+import React from 'react'; 
 import { 
   FaUser,
   FaShopify 
 } from "react-icons/fa";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
-import Card from "../ui/dashboard/card/card"
-import styles from "../ui/dashboard/dashboard.module.css"
-import Transactions from "../ui/dashboard/transactions/transactions"
-import Chart from "../ui/dashboard/chart/chart"
-
+import Card from "../ui/dashboard/card/card";
+import styles from "../ui/dashboard/dashboard.module.css";
+import Transactions from "../ui/dashboard/transactions/transactions";
+import Chart from "../ui/dashboard/chart/chart";
 
 const Dashboard = async () => {
     return (
-    
      <div className={styles.wrapper}>
         <div className={styles.main}></div>
         <div className={styles.cards}>
@@ -26,7 +25,7 @@ const Dashboard = async () => {
         <Transactions />
         <Chart />
       </div>
-      
     );
   };
-export default Dashboard
+
+export default Dashboard;

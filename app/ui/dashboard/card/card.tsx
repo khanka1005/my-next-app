@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './card.module.css'
 
 const card = ({ icon, number, detail }:{
