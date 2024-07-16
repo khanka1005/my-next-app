@@ -1,6 +1,8 @@
 import React from 'react'
-import styles from './transactions.module.css'
+
+
 import Image from 'next/image';
+import styles from './transactions.module.css'
 const Transactions = () => {
   return (
     <div className={styles.container}>

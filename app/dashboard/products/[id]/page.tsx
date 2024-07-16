@@ -1,6 +1,10 @@
 import React from 'react'
-import styles from '@/app/ui/dashboard/products/singleProduct/singleProduct.module.css'
+
 import Image from 'next/image'
+
+import styles from '@/app/ui/dashboard/products/singleProduct/singleProduct.module.css'
+
+
 const SingleProductPage = () => {
   return (
     <div className={styles.container}>

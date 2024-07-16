@@ -1,7 +1,10 @@
 'use client';
+
 import React, { useEffect, useState } from "react";
-import { useAuth } from '@/app/context/AuthContext';
+
 import { useRouter, usePathname } from 'next/navigation';
+import { useAuth } from '@/app/context/AuthContext';
+
 import styles from '@/app/home.module.css';
 
 const Home = () => {

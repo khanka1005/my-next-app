@@ -1,11 +1,16 @@
 'use client'
+
+import { 
+  FaUser,
+  FaShopify 
+} from "react-icons/fa";
+import { CiCircleCheck } from "react-icons/ci";
+import { FaCartShopping } from "react-icons/fa6";
 import Card from "../ui/dashboard/card/card"
 import styles from "../ui/dashboard/dashboard.module.css"
 import Transactions from "../ui/dashboard/transactions/transactions"
 import Chart from "../ui/dashboard/chart/chart"
-import { FaUser, FaShopify } from "react-icons/fa";
-import { CiCircleCheck } from "react-icons/ci";
-import { FaCartShopping } from "react-icons/fa6";
+
 
 const Dashboard = async () => {
     return (

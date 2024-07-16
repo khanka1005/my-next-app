@@ -1,9 +1,16 @@
 'use client'
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { createContext, useContext, 
+  useState, useEffect, 
+  ReactNode } from "react";
+  import { useRouter
+    , usePathname } from 'next/navigation';
+  
+import { signInWithPopup, 
+  signOut, 
+  onAuthStateChanged, 
+  GoogleAuthProvider, 
+  signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { useRouter, usePathname } from 'next/navigation';
-
 interface AuthContextType {
   user: any;
   googleSignIn: () => Promise<void>;

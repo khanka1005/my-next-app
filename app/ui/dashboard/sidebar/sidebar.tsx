@@ -1,13 +1,18 @@
 // components/sidebar.tsx
 'use client'
-import React from 'react';
-import styles from './sidebar.module.css';
+
+import React,{ useEffect } from 'react';
+
 import MenuLink from './menuLink/menuLink';
 import Image from 'next/image';
-import { MdDashboard, MdSupervisedUserCircle, MdLogout, MdShoppingBag } from 'react-icons/md';
-import { useEffect } from 'react';
+import { MdDashboard,
+   MdSupervisedUserCircle,
+    MdLogout,
+     MdShoppingBag } from 'react-icons/md';
+
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/context/AuthContext';
+import styles from './sidebar.module.css';
 
 const menuItems = [
   {

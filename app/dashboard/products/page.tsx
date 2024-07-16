@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@/app/ui/dashboard/products/products.module.css';

@@ -1,7 +1,12 @@
 "use client"
+
 import React from 'react';
+import { usePathname, 
+  useRouter, 
+  useSearchParams } 
+  from 'next/navigation';
 import styles from './pagination.module.css';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
 
 interface PaginationProps {
   count: number;

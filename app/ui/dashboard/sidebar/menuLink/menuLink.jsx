@@ -1,8 +1,10 @@
 'use client'
+
 import React from 'react'
-import styles from "./menuLink.module.css"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import styles from "./menuLink.module.css"
+
 const MenuLink = ({item}) => {
   const pathname=usePathname();
  
