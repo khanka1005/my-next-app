@@ -1,8 +1,9 @@
 'use client';
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useRouter, usePathname } from 'next/navigation';
-
 import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+
 import { auth } from "../firebase";
 
 interface AuthContextType {

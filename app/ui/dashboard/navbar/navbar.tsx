@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { usePathname } from 'next/navigation'
-
 import {MdNotifications, 
   MdOutlineChat, 
   MdPublic, 
   MdSearch} from "react-icons/md";
+  
 import styles from './navbar.module.css'
 
 const Navbar = () => {

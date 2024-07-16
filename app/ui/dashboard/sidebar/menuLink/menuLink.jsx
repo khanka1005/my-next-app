@@ -3,9 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import PropTypes from 'prop-types';
 
 import styles from "./menuLink.module.css";
-import PropTypes from 'prop-types';
 
 const MenuLink = ({ item }) => {
   const pathname = usePathname();

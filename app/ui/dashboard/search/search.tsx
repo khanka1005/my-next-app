@@ -4,6 +4,7 @@ import React from 'react';
 import { MdSearch } from 'react-icons/md';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+
 import styles from './search.module.css';
 
 

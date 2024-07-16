@@ -7,12 +7,13 @@ import {
 } from "react-icons/fa";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
+
 import Card from "../ui/dashboard/card/card";
 import styles from "../ui/dashboard/dashboard.module.css";
 import Transactions from "../ui/dashboard/transactions/transactions";
 import Chart from "../ui/dashboard/chart/chart";
 
-const Dashboard = async () => {
+const Dashboard = () => {
     return (
      <div className={styles.wrapper}>
         <div className={styles.main}></div>

@@ -1,13 +1,13 @@
 "use client"
 
 import React from 'react'
-
 import { AreaChart, 
   Area, 
   XAxis,
   YAxis, 
   Tooltip, 
   ResponsiveContainer } from 'recharts';
+  
 import styles from './chart.module.css'
 
 const data = [

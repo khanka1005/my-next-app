@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from '@/app/ui/dashboard/products/addProduct/addProduct.module.css'
 import { addProduct } from '@/app/lib/action'
 const AddProductPage = () => {
