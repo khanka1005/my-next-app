@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from "react";
 import { useAuth } from '@/app/context/AuthContext';
 import { useRouter, usePathname } from 'next/navigation';
-import styles from '@/app/home.module.css'
+import styles from '@/app/home.module.css';
 
 const Home = () => {
   const { user, googleSignIn, emailSignIn } = useAuth();
@@ -12,7 +12,7 @@ const Home = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleSignin = async (event) => {
+  const handleSignin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await emailSignIn(email, password);
@@ -33,7 +33,7 @@ const Home = () => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
       setLoading(false);
-    }
+    };
     checkAuthentication();
   }, []);
 
