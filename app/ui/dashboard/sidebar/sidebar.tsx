@@ -1,16 +1,10 @@
-// components/sidebar.tsx
 'use client'
 
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { MdDashboard,
-   MdSupervisedUserCircle,
-    MdLogout,
-     MdShoppingBag } from 'react-icons/md';
-
+import { MdDashboard, MdSupervisedUserCircle, MdLogout, MdShoppingBag } from 'react-icons/md';
 import { useAuth } from '@/app/context/AuthContext';
-
 import MenuLink from './menuLink/menuLink';
 import styles from './sidebar.module.css';
 
@@ -38,7 +32,7 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
-  const { user, logOut } = useAuth();
+  const { user, username, logOut } = useAuth();
   const router = useRouter();
   const handleSignOut = async () => {
     try {
@@ -47,6 +41,7 @@ const Sidebar = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     if (!user) {
       router.push('/');
@@ -56,13 +51,13 @@ const Sidebar = () => {
   if (!user) {
     return <p>Loading...</p>; // or a loading spinner
   }
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.user}>
         <Image className={styles.userImage} src="/avatar.png" alt="" width="50" height="50" />
         <div className={styles.userDetail}>
-          <span className={styles.username}>Khanka</span>
+          <span className={styles.username}>{username}</span>
           <span className={styles.usertitle}>Admin</span>
         </div>
       </div>
