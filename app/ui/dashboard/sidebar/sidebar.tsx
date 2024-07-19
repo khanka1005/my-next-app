@@ -4,7 +4,9 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { MdDashboard, MdSupervisedUserCircle, MdLogout, MdShoppingBag } from 'react-icons/md';
+
 import { useAuth } from '@/app/context/AuthContext';
+
 import MenuLink from './menuLink/menuLink';
 import styles from './sidebar.module.css';
 
