@@ -1,5 +1,5 @@
 // ProductView.tsx
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { fetchAProducts } from '@/app/lib/data';
 import Search from '@/app/ui/dashboard/search/searchCard';
@@ -42,7 +42,11 @@ const ProductView: React.FC<ProductViewProps> = async ({ searchParams }) => {
           <Category />
         </div>
         <div className="col-md-9"> 
-          <Search placeholder="Search for a product..." />
+
+        <Suspense fallback={<div>Loading...</div>}>
+        <Search placeholder="Search products..." />
+      </Suspense>
+
           <Scroll initialProducts={serializedProducts} initialPage={page} searchQuery={q} initialCategory={cat} />
         </div>
       </div>
