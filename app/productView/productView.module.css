@@ -63,12 +63,34 @@
     border: none;
     cursor: pointer;
   }
+ 
   
-  .view {
-    background-color: teal;
+
+
+  .sidebar {
+    width: 40%;
+    padding: 16px;
   }
   
-  .delete {
-    background-color: crimson;
+  .categories {
+    display: flex;
+    flex-direction: column;
+  }
+  .categories button {
+    margin: 8px 0;
+    padding: 8px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
   }
   
+  .categories button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .products {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }

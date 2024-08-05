@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/ui/dashboard/sidebar/menuLink/menuLink.jsx", "app/test/page.jsx", "app/productView/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/ui/dashboard/sidebar/menuLink/menuLink.jsx", "app/test/page.jsx", "app/productView/page.tsx", "app/components/page.js", "app/api/route/route.js"],
   "exclude": ["node_modules"]
 }

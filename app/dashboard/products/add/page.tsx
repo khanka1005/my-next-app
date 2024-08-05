@@ -7,12 +7,7 @@ const AddProductPage = () => {
     <div className={styles.container}>
       <form action={addProduct} className={styles.form}>
         <input type="text" placeholder='title' name='title' required />
-        <select name="cat" id="cat">
-        <option value="general">Choose a Category</option>
-         <option value="kitchen">Kitchen</option>
-         <option value="phone">Phone</option>
-         <option value="computer">Computer</option>
-        </select>
+        <input type="text" placeholder='cat' name='cat' required />
         <input type="number" name="price" placeholder='price' />
         <input type="number" name="stock" placeholder='stock' />
         <input type="text" name="color" placeholder='color' />

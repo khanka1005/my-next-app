@@ -11,7 +11,7 @@ const ProductGrid = () => {
   const router = useRouter();
 
   const handleProductClick = () => {
-    router.push('/productView');
+    router.push('/whatever');
   };
 
   return (
