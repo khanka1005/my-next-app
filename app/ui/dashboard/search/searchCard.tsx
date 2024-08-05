@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { MdSearch } from 'react-icons/md';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
@@ -35,10 +35,12 @@ const SearchCard: React.FC<SearchCardProps> = ({ placeholder }) => {
   }, 300);
 
   return (
+    <Suspense>
     <div className={styles.container}>
       <MdSearch />
       <input type="text" placeholder={placeholder} className={styles.input} onChange={handleSearch} />
     </div>
+    </Suspense>
   );
 };
 
