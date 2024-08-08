@@ -19,6 +19,7 @@ const HomePage: React.FC<HomePageProps> = ({ searchParams }) => {
   return (
     <div className={styles.container}>
       <ShopNavbar />
+      
       <Container className="mt-5">
         <h1>Welcome to My Online Shop</h1>
         <ProductView searchParams={searchParams} />

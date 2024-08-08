@@ -1,10 +1,11 @@
-// ProductView.tsx
 import React from 'react';
 
 import { fetchAProducts } from '@/app/lib/data';
 import Search from '@/app/ui/dashboard/search/searchCard';
 import Scroll from '@/app/ui/dashboard/scroll/scroll';
 import Category from '@/app/ui/dashboard/category/category';
+
+import styles from './productView.module.css'; // Adjust the path as necessary
 
 interface SearchParams {
   page?: number;
@@ -35,19 +36,20 @@ const ProductView: React.FC<ProductViewProps> = async ({ searchParams }) => {
     ...product,
     createdAt: new Date(product.createdAt).toISOString(),
   }));
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-3">
           <Category />
         </div>
-        <div className="col-md-9"> 
-
-        
-        <Search placeholder="Search products..." />
-     
-
-          <Scroll initialProducts={serializedProducts} initialPage={page} searchQuery={q} initialCategory={cat} />
+        <div className="col-md-9">
+          <div className={styles.searchContainer}>
+            <Search placeholder="Search products..." />
+          </div>
+          <div className={styles.scrollContainer}>
+            <Scroll initialProducts={serializedProducts} initialPage={page} searchQuery={q} initialCategory={cat} />
+          </div>
         </div>
       </div>
     </div>

@@ -1,6 +1,9 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
 import Image from 'next/image';
+import { FaShoppingBasket } from 'react-icons/fa';
+
+import {  useBasket } from '@/app/context/BasketContext';
 
 export interface Product {
   _id: string;
@@ -25,6 +28,7 @@ const Scroll: React.FC<ScrollProps> = ({ initialProducts, initialPage, searchQue
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const observer = useRef<IntersectionObserver | null>(null);
+  const { addToBasket } = useBasket();
 
   const fetchMoreData = useCallback(async () => {
     if (loading || !hasMore) return;
@@ -88,6 +92,9 @@ const Scroll: React.FC<ScrollProps> = ({ initialProducts, initialPage, searchQue
               <p className="card-text"><strong>Stock:</strong> {product.stock}</p>
               <p className="card-text"><small className="text-muted">Created at: {new Date(product.createdAt).toString().slice(4, 16)}</small></p>
               <a href="#" className="btn btn-primary">View Details</a>
+              <button className="btn btn-primary" onClick={() => addToBasket(product)}>
+                <FaShoppingBasket size={20} />
+              </button>
             </div>
           </div>
         </div>
@@ -100,3 +107,4 @@ const Scroll: React.FC<ScrollProps> = ({ initialProducts, initialPage, searchQue
 };
 
 export default Scroll;
+

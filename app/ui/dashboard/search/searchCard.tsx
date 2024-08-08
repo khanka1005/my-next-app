@@ -22,7 +22,7 @@ const SearchCard: React.FC<SearchCardProps> = ({ placeholder }) => {
     if (e.target.value) {
       if (e.target.value.length > 2) {
         params.set("q", e.target.value);
-        params.set("page", "1");
+       
       }
     } else {
       params.delete("q");
@@ -37,8 +37,9 @@ const SearchCard: React.FC<SearchCardProps> = ({ placeholder }) => {
   return (
     <Suspense>
     <div className={styles.container}>
-      <MdSearch />
+      
       <input type="text" placeholder={placeholder} className={styles.input} onChange={handleSearch} />
+      <MdSearch className={styles.icon} />
     </div>
     </Suspense>
   );

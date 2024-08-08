@@ -1,0 +1,32 @@
+.basketIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  right:-20px
+}
+.loginIcon{
+  position: relative;
+  display: flex;
+  right: -5px
+
+}
+.basketCounter {
+  position: absolute;
+  top: -5px;  /* Adjusted from -10px to -5px to bring it closer vertically */
+  right: -5px;  /* Adjusted from -10px to -5px to bring it closer horizontally */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.hr {
+  max-width: 69%;
+  margin: 0 auto; /* Center the hr */
+  border: 0; /* Remove default border */
+  border-top: 2px solid #333; /* Thicker and darker line */
+  opacity: 0.7; /* Slightly transparent for a softer look */
+  margin-top: 10px; /* Space above hr */
+  margin-bottom: 20px; /* Space below hr */
+}
