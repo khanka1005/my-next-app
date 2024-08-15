@@ -1,42 +1,55 @@
-// Category.tsx
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+
+import styles from './category.module.css';
 
 const categories = ["all", "kitchen", "computer", "toy"];
 
 const Category: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
 
   const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
     const params = new URLSearchParams(searchParams.toString());
 
     if (category !== "all") {
       params.set("cat", category);
-      // Reset to page 1 when category changes
       replace(`${pathname}?${params.toString()}`);
     } else {
-       replace(pathname);
+      replace(pathname);
     }
   };
 
   return (
-    <div>
-      <h5>Categories</h5>
-      <ul>
-        {categories.map((category) => (
-          <li key={category}>
-            <button onClick={() => handleCategoryClick(category)}>
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={styles.categoryList}>
+      <li className={styles.categoryItem}>
+        <button
+          className={`${styles.categoryButton} ${selectedCategory === 'all' ? styles.selected : ''}`}
+          onClick={() => handleCategoryClick('all')}
+        >
+          Categories {selectedCategory ? '▾' : '▸'}
+        </button>
+        {selectedCategory && (
+          <ul className={styles.subCategoryList}>
+            {categories.map((category) => (
+              <li key={category} className={styles.subCategoryItem}>
+                <button
+                  className={`${styles.subCategoryButton} ${selectedCategory === category ? styles.selected : ''}`}
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    </ul>
   );
 };
 

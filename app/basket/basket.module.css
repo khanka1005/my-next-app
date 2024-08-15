@@ -1,0 +1,52 @@
+/* basket.module.css */
+.Navbar{
+    margin-top:1px;
+}
+.container {
+    
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top:100px;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    margin-bottom: 10px;
+  }
+  
+  .btn-danger {
+    margin-top: 10px;
+  }
+  
+  .btn-success {
+    margin-top: 20px;
+  }
+  
+  .input-group {
+    max-width: 120px;
+  }
+  
+  .img-fluid {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .totalPrice {
+    margin-top: 100px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .para{
+   margin-top:100px
+  }

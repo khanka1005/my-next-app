@@ -16,3 +16,6 @@ export async function GET(req) {
     return new Response('Failed to fetch products', { status: 500 });
   }
 }
+
+
+  

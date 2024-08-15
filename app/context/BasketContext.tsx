@@ -7,10 +7,10 @@ import { Product } from '@/app/basket/page'; // Adjust the path as necessary
 
 interface BasketContextType {
   basket: Product[];
-  quantities: { [key: string]: number };
+  quantities: { [key: string]: number | string };
   addToBasket: (product: Product) => void;
   removeFromBasket: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
+  updateQuantity: (id: string, quantity: number | string) => void;
 }
 
 export const BasketContext = createContext<BasketContextType | undefined>(undefined);
@@ -18,7 +18,7 @@ export const BasketContext = createContext<BasketContextType | undefined>(undefi
 export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isClient, setIsClient] = useState(false);
   const [basket, setBasket] = useSessionStorage<Product[]>('basket', []);
-  const [quantities, setQuantities] = useSessionStorage<{ [key: string]: number }>('quantities', {});
+  const [quantities, setQuantities] = useSessionStorage<{ [key: string]: number | string }>('quantities', {});
 
   useEffect(() => {
     setIsClient(true);
@@ -37,7 +37,7 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     });
   };
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateQuantity = (id: string, quantity: number | string) => {
     setQuantities((prevQuantities) => ({ ...prevQuantities, [id]: quantity }));
   };
 

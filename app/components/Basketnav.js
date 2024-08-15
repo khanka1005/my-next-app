@@ -23,38 +23,18 @@ const ShopNavbar = () => {
 
   return (
     <div className={styles.mainContainer}>
-      {/* Background Image */}
-      <Image 
-      src="/main.jpg" 
-      alt="Main"
-      width={0}
-      height={0}
-      sizes="100vw"
-      style={{ width: '100%', height: 'auto' }}
-      className={styles.mainImage} />
-
       {/* Overlay Content */}
-      <div className={styles.overlay}>
+      <div >
         {/* Logo and Icons Container */}
         <div className={styles.logoAndIconsContainer}>
           <Navbar variant="light" expand="lg" className={styles.navbar}>
             <Container>
               <Navbar.Brand href="/" className={styles.navbarBrand}>
-
-
-
-                <Image 
-                src="/logo.png"
-                width={0} 
-                height={0}
-                 sizes="100vw"
-                style={{ width: '180', height: 'auto' }} 
-                alt="Logo" 
-                className={styles.logo} />
-
-
-
-
+                <Image
+                 src="/logo.png"
+                 alt="Logo"
+                 width={180}
+                  className={styles.logo} />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
@@ -76,9 +56,6 @@ const ShopNavbar = () => {
             </Container>
           </Navbar>
         </div>
-
-        {/* Social media icons */}
-        
       </div>
     </div>
   );
