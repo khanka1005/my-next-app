@@ -35,6 +35,7 @@ export const addUser = async (formData) => {
 
 export const updateUser = async (formData) => {
   const { id, username, email, password, phone, address, isAdmin, isActive } = Object.fromEntries(formData);
+
   try {
     connectToDB();
 
@@ -85,9 +86,10 @@ export const updateProduct = async (formData) => {
 
 export const addProduct = async (formData) => {
   const { title,cat, desc, price, stock, color, size } = Object.fromEntries(formData);
+  
   try {
     connectToDB();
-
+    
     const newProduct = new Product({
       title,
       cat,

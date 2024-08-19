@@ -12,6 +12,14 @@ const nextConfig = {
           protocol: "https",
           hostname: "pixels.com",
         },
+        {
+          protocol: "https",
+          hostname: "scontent.fuln1-2.fna.fbcdn.net",
+        },
+        {
+          protocol: "https",
+          hostname: "scontent.fuln1-1.fna.fbcdn.net",
+        },
         // Add other hostnames if needed
       ],
     },

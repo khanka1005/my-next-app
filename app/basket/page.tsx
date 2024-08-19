@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { Image } from 'antd';
 
 import { useBasket } from '@/app/context/BasketContext';
 import Navbar from '@/app/components/Basketnav';
@@ -57,6 +57,7 @@ const Basket: React.FC = () => {
                   <div className="row g-0">
                     <div className="col-md-4">
                       <Image
+                     
                         src={product.img || "/noproduct.jpg"}
                         alt={product.title}
                         className={`img-fluid rounded-start ${styles.imgFluid}`}
@@ -65,7 +66,7 @@ const Basket: React.FC = () => {
                         style={{ objectFit: 'cover' }}
                       />
                     </div>
-                    <div className="col-md-8">
+                    <div className={`col-md-8  ${styles.mbody}`}>
                       <div className={`card-body ${styles.cardBody}`}>
                         <h5 className={`card-title ${styles.cardTitle}`}>{product.title}</h5>
                         <p className={`card-text ${styles.cardText}`}>{product.desc}</p>
@@ -93,6 +94,7 @@ const Basket: React.FC = () => {
               ))}
             </div>
             <div className="col-md-4">
+            
               <h3 className={styles.totalPrice}>Total: ${getTotalPrice().toFixed(2)}</h3>
               <button className={`btn btn-success btn-lg ${styles.btnSuccess}`} onClick={handleProceedToPayment}>
                 Proceed to Payment

@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import styles from './category.module.css';
 
-const categories = ["all", "kitchen", "computer", "toy"];
+const categories = ["all", "kitchen", "computer","Угж", "Хаздаг Тоглоом","Сойз","Соск"];
 
 const Category: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);

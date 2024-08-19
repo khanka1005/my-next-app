@@ -103,13 +103,11 @@ const LoginPage = () => {
             >
               Sign in with Google
             </button>
-            <button
-              type="button"
+            <p className="text-sm"
               onClick={() => setIsSignUp(!isSignUp)}
-              className={`${styles.button} ${styles.buttonGray}`}
             >
               {isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
-            </button>
+            </p>
           </form>
         ) : null}
       </div>

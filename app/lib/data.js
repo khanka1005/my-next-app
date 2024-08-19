@@ -89,7 +89,7 @@ export const fetchCardProducts = async (q, page) => {
   // lib/data.ts
 export const fetchAProducts = async (q, page, cat) => {
     const regex = new RegExp(q, "i");
-    const ITEMS_PER_PAGE = 2;
+    const ITEMS_PER_PAGE = 4;
 
     try {
         await connectToDB();

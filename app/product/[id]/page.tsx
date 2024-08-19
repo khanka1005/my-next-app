@@ -1,10 +1,12 @@
+
 import React from 'react';
-import Image from 'next/image';
+import { Image, Rate } from 'antd';
 import { FaShoppingBasket } from 'react-icons/fa';
 
 import { useBasket } from '@/app/context/BasketContext';
-import ShopNavbar from '@/app/components/Navbar';
+import ShopNavbar from '@/app/components/Basketnav';
 import { fetchProduct } from '@/app/lib/data';
+
 
 
 const SingleProductPage = async ({ params }: { params: { id: string } }) => {
@@ -32,8 +34,11 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
         </div>
         <div className="col-md-6">
           <div className="d-flex justify-content-between align-items-center">
+         
             <h2 style={{ fontWeight: 'bold' }}>{product.title}</h2>
+            
             <div
+            
               style={{
                 fontWeight: 'bold',
                 backgroundColor: '#f8f9fa',
@@ -47,6 +52,7 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <p>{product.desc}</p>
+          <Rate disabled defaultValue={4}  />
           <p>Stock: {product.stock}</p>
           
         </div>

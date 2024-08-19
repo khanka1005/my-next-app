@@ -4,9 +4,11 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
 import { FaShoppingBasket, FaSignInAlt, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import Image from 'next/image';
+import { Affix } from 'antd';
 
 import { useBasket } from '@/app/context/BasketContext'; // Adjust the path as necessary
 import styles from "@/app/components/ShopNavbar.module.css";
+
 
 
 const ShopNavbar = () => {
@@ -32,12 +34,14 @@ const ShopNavbar = () => {
       sizes="100vw"
       style={{ width: '100%', height: 'auto' }}
       className={styles.mainImage} />
-
+ <Affix>
       {/* Overlay Content */}
       <div className={styles.overlay}>
         {/* Logo and Icons Container */}
         <div className={styles.logoAndIconsContainer}>
+       
           <Navbar variant="light" expand="lg" className={styles.navbar}>
+            
             <Container>
               <Navbar.Brand href="/" className={styles.navbarBrand}>
 
@@ -74,12 +78,15 @@ const ShopNavbar = () => {
                 </Nav>
               </Navbar.Collapse>
             </Container>
+            
           </Navbar>
+          
         </div>
-
+       
         {/* Social media icons */}
         
       </div>
+      </Affix>
     </div>
   );
 };

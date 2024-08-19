@@ -4,6 +4,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
 import { FaShoppingBasket, FaSignInAlt, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import Image from 'next/image';
+import { Affix } from "antd";
 
 import { useBasket } from '@/app/context/BasketContext'; // Adjust the path as necessary
 import styles from "@/app/components/ShopNavbar.module.css";
@@ -22,6 +23,7 @@ const ShopNavbar = () => {
   };
 
   return (
+    <Affix>
     <div className={styles.mainContainer}>
       {/* Overlay Content */}
       <div >
@@ -32,8 +34,11 @@ const ShopNavbar = () => {
               <Navbar.Brand href="/" className={styles.navbarBrand}>
                 <Image
                  src="/logo.png"
-                 alt="Logo"
-                 width={180}
+                 width={0} 
+                 height={0}
+                  sizes="100vw"
+                 style={{ width: '180', height: 'auto' }} 
+                 alt="Logo" 
                   className={styles.logo} />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -58,6 +63,7 @@ const ShopNavbar = () => {
         </div>
       </div>
     </div>
+    </Affix>
   );
 };
 
