@@ -2,9 +2,11 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { Image } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { useBasket } from '@/app/context/BasketContext';
-import Navbar from '@/app/components/Basketnav';
+import Navbar from '@/app/components/Navbar';
 import styles from '@/app/basket/basket.module.css';
 
 export interface Product {
@@ -15,17 +17,18 @@ export interface Product {
   createdAt: string;
   stock: number;
   img?: string;
+  quantity?: number;
 }
 
 const Basket: React.FC = () => {
-  const { basket, quantities, removeFromBasket, updateQuantity } = useBasket();
+  const { basket, quantities, removeFromBasket, updateQuantity, clearBasket } = useBasket();
   const router = useRouter();
 
   const handleQuantityChange = (productId: string, newQuantity: number | string) => {
     if (newQuantity === '' || isNaN(Number(newQuantity))) {
-      updateQuantity(productId, '');
+      updateQuantity(productId, 1); 
     } else {
-      const quantity = Math.max(1, parseInt(newQuantity.toString(), 10));
+      const quantity = Math.max(1, Math.min(Number(newQuantity), basket.find(p => p._id === productId)?.stock || Infinity));
       updateQuantity(productId, quantity);
     }
   };
@@ -36,68 +39,98 @@ const Basket: React.FC = () => {
 
   const getTotalPrice = () => {
     return basket.reduce((total, product) => {
-      const quantity = parseInt(quantities[product._id] as string, 10) || 1;
+      const quantity = quantities[product._id] || 1;
       return total + product.price * quantity;
     }, 0);
   };
 
   return (
     <div>
-      <div className={styles.Navbar}><Navbar /></div>
-      
+      <Navbar />
+
       <div className={`container ${styles.container}`}>
-       
+        <h2 className={styles.shoppingCartTitle}>САГС</h2>
+
         {basket.length === 0 ? (
-          <p className={styles.para}>Your basket is empty.</p>
+          <p className={styles.para}>Сагс хоосон байна.</p>
         ) : (
-          <div className="row">
-            <div className="col-md-8">
-              {basket.map((product: Product) => (
-                <div key={product._id} className={`card mb-4 ${styles.card}`}>
-                  <div className="row g-0">
-                    <div className="col-md-4">
-                      <Image
-                     
-                        src={product.img || "/noproduct.jpg"}
-                        alt={product.title}
-                        className={`img-fluid rounded-start ${styles.imgFluid}`}
-                        width={320}
-                        height={240}
-                        style={{ objectFit: 'cover' }}
-                      />
-                    </div>
-                    <div className={`col-md-8  ${styles.mbody}`}>
-                      <div className={`card-body ${styles.cardBody}`}>
-                        <h5 className={`card-title ${styles.cardTitle}`}>{product.title}</h5>
-                        <p className={`card-text ${styles.cardText}`}>{product.desc}</p>
-                        <p className={`card-text ${styles.cardText}`}><strong>₮{product.price}</strong></p>
-                        <div className={`input-group mb-3 ${styles.inputGroup}`}>
-                          <input
-                            type="number"
-                            className="form-control"
-                            value={quantities[product._id] === '' ? '' : quantities[product._id]}
-                            min={1}
-                            max={product.stock}
-                            onChange={(e) => handleQuantityChange(product._id, e.target.value)}
-                          />
+          <div>
+            <table className={`table ${styles.table}`}>
+              <thead>
+                <tr>
+                  <th>БҮТЭЭГДЭХҮҮН</th>
+                  <th>ҮНИЙН ДҮН</th>
+                  <th>ТОО ШИРХЭГ</th>
+                  <th>НИЙТ</th>
+                </tr>
+              </thead>
+              <tbody>
+                {basket.map((product: Product) => (
+                  <tr key={product._id}>
+                    <td>
+                      <div className={styles.productDetails}>
+                        <Image
+                          src={product.img || "/noproduct.jpg"}
+                          alt={product.title}
+                          width={100}
+                          height={100}
+                          style={{ objectFit: 'cover', borderRadius: '8px' }}
+                        />
+                        <div>
+                          <p className={styles.productTitle}>{product.title}</p>
+                          <button
+                            className={`btn btn-link ${styles.removeButton}`}
+                            onClick={() => removeFromBasket(product._id)}
+                            aria-label="Remove item"
+                            >
+                            <FontAwesomeIcon icon={faTrash} size="lg" />
+                        </button>
                         </div>
-                        <button
-                          className={`btn btn-danger ${styles.btnDanger}`}
-                          onClick={() => removeFromBasket(product._id)}
+                      </div>
+                    </td>
+                    <td>₮{product.price}</td>
+                    <td>
+                      <div className={styles.quantityControl}>
+                        <button 
+                          className={styles.quantityButton} 
+                          onClick={() => handleQuantityChange(product._id, (quantities[product._id] || 1) - 1)}
+                          disabled={(quantities[product._id] || 1) <= 1}
                         >
-                          Remove from Basket
+                          -
+                        </button>
+                        <input
+                          type="text"
+                          className={styles.quantityInput}
+                          value={quantities[product._id] || 1}
+                          onChange={(e) => handleQuantityChange(product._id, e.target.value)}
+                        />
+                        <button 
+                          className={styles.quantityButton} 
+                          onClick={() => handleQuantityChange(product._id, (quantities[product._id] || 1) + 1)}
+                          disabled={(quantities[product._id] || 1) >= product.stock}
+                        >
+                          +
                         </button>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                    </td>
+                    <td>₮{(product.price * (quantities[product._id] || 1)).toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className={styles.clearCartButtonContainer}>
+              <button className={`btn btn-outline-danger ${styles.clearCartButton}`} onClick={clearBasket}>
+                Сагсийг устгах
+              </button>
             </div>
-            <div className="col-md-4">
-            
-              <h3 className={styles.totalPrice}>Total: ${getTotalPrice().toFixed(2)}</h3>
-              <button className={`btn btn-success btn-lg ${styles.btnSuccess}`} onClick={handleProceedToPayment}>
-                Proceed to Payment
+            <div className={styles.summaryContainer}>
+              <h4>Нийт Үнэ: ₮{getTotalPrice().toFixed(2)}</h4>
+              <p>Хүргэлт Багтсан Болно</p>
+              <button className={`btn btn-outline-primary ${styles.checkoutButton}`} onClick={handleProceedToPayment}>
+                Төлөх
+              </button>
+              <button className={`btn btn-link ${styles.continueShoppingButton}`} onClick={() => router.push('/')}>
+                &larr; Үргэлжлүүлэн Худалдаа хийх
               </button>
             </div>
           </div>

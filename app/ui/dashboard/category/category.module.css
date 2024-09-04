@@ -1,56 +1,33 @@
 .categoryList {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-  }
-  
-  .categoryItem {
-    margin-bottom: 10px;
-  }
-  
-  .categoryButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    padding: 8px 12px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    outline: none;
-    transition: color 0.3s;
-    color: #333;
-  }
-  
-  .subCategoryList {
-    padding-left: 1em;
-    list-style: none;
-    margin: 0;
-  }
-  
-  .subCategoryItem {
-    margin-top: 5px;
-  }
-  
-  .subCategoryButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    padding: 8px 12px;
-    font-size: 16px;
-    width: 100%;
-    transition: color 0.3s;
-    color: #333;
-  }
-  
-  .selected {
-    background-color:#E8EDE6;
-    font-weight: bold;
-  }
-  
-  .categoryButton:hover,
-  .subCategoryButton:hover {
-    color: #0056b3;
-  }
-  
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 0;
+  list-style-type: none;
+  background-color: #f8f8f8;
+  margin: 0;
+}
+
+.categoryItem {
+  position: relative;
+}
+
+.categoryButton,
+.subCategoryButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333;
+  transition: border-bottom 0.3s ease;
+}
+
+.selected {
+  border-bottom: 2px solid black;
+  font-weight: bold;
+}
+
+.icon {
+  margin-right: 5px;
+}

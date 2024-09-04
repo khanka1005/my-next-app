@@ -21,6 +21,7 @@
     font-weight: bold;
     margin-bottom: 1.5rem;
     color: #343a40;
+    text-align:center;
   }
   
   .button {
@@ -31,6 +32,7 @@
     color: black;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top:5px;
   }
   
   .button-blue {
@@ -66,5 +68,9 @@
     font-size: 0.875rem;
     font-weight: 500;
     color: #495057;
+  }
+  .sign{
+    margin-top: 40px;
+    text-align:center;
   }
   

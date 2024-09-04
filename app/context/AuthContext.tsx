@@ -8,7 +8,7 @@ import { auth } from "../firebase";
 
 interface AuthContextType {
   user: any;
-  username: string | null;  // Add username to context
+  username: string | null;  
   googleSignIn: () => Promise<void>;
   emailSignIn: (email: string, password: string) => Promise<void>;
   emailSignUp: (email: string, password: string) => Promise<void>;
@@ -19,7 +19,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<any>(null);
-  const [username, setUsername] = useState<string | null>(null);  // Initialize username state
+  const [username, setUsername] = useState<string | null>(null); 
   const router = useRouter();
   const pathname = usePathname();
 
@@ -27,7 +27,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      setUsername(result.user.email?.split('@')[0] || null);  // Extract username from email
+      setUsername(result.user.email?.split('@')[0] || null); 
       router.push('/dashboard');
     } catch (error) {
       console.error("Error during sign in:", error);
@@ -37,7 +37,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const emailSignIn = async (email: string, password: string) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setUsername(email.split('@')[0]);  // Extract username from email
+      setUsername(email.split('@')[0]);  
       router.push('/dashboard');
     } catch (error) {
       console.error("Error during email sign in:", error);
@@ -47,7 +47,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const emailSignUp = async (email: string, password: string) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      setUsername(email.split('@')[0]);  // Extract username from email
+      setUsername(email.split('@')[0]);  
       router.push('/dashboard');
     } catch (error) {
       console.error("Error during email sign up:", error);
@@ -57,7 +57,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const logOut = async () => {
     try {
       await signOut(auth);
-      setUsername(null);  // Reset username on logout
+      setUsername(null);  
       router.push('/');
     } catch (error) {
       console.error("Error during sign out:", error);
@@ -68,7 +68,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        setUsername(currentUser.email?.split('@')[0] || null);  // Extract username from email
+        setUsername(currentUser.email?.split('@')[0] || null);  
       } else {
         setUsername(null);
       }

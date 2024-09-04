@@ -2,13 +2,21 @@
 
 import React, { useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
 import styles from './category.module.css';
 
-const categories = ["all", "kitchen", "computer","Угж", "Хаздаг Тоглоом","Сойз","Соск"];
+
+const categories = [
+  { name: "all", label: "Бүгд", icon: "🛒" }, 
+  { name: "Угж", label: "Угж", icon: "🍼" },
+  { name: "Хаздаг Тоглоом", label: "Хаздаг Тоглоом", icon: "🧸" },
+  { name: "Сойз", label: "Сойз", icon: "🪥" },
+  { name: "Соск", label: "Соск", icon: "/pacifier.png" } // Updated category for pacifier
+];
 
 const Category: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -19,37 +27,32 @@ const Category: React.FC = () => {
 
     if (category !== "all") {
       params.set("cat", category);
-      replace(`${pathname}?${params.toString()}`);
+      replace(`${pathname}?${params.toString()}`, { scroll: false });
     } else {
       replace(pathname);
     }
   };
 
   return (
-    <ul className={styles.categoryList}>
-      <li className={styles.categoryItem}>
-        <button
-          className={`${styles.categoryButton} ${selectedCategory === 'all' ? styles.selected : ''}`}
-          onClick={() => handleCategoryClick('all')}
-        >
-          Categories {selectedCategory ? '▾' : '▸'}
-        </button>
-        {selectedCategory && (
-          <ul className={styles.subCategoryList}>
-            {categories.map((category) => (
-              <li key={category} className={styles.subCategoryItem}>
-                <button
-                  className={`${styles.subCategoryButton} ${selectedCategory === category ? styles.selected : ''}`}
-                  onClick={() => handleCategoryClick(category)}
-                >
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </li>
-    </ul>
+    <div className={styles.categoryContainer}>
+      <ul className={styles.categoryList}>
+        {categories.map(({ name, label, icon }) => (
+          <li key={name} className={styles.categoryItem}>
+            <button
+              className={`${styles.categoryButton} ${selectedCategory === name ? styles.selected : ''}`}
+              onClick={() => handleCategoryClick(name)}
+            >
+              {icon.startsWith('/') ? (
+                <Image width={15} height={15} src={icon} alt={label} className={styles.icon} />
+              ) : (
+                <span className={styles.icon}>{icon}</span>
+              )}
+              <span className={styles.label}>{label}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

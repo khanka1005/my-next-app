@@ -60,7 +60,7 @@ export const updateUser = async (formData) => {
 };
 
 export const updateProduct = async (formData) => {
-  const { id, title,cat, desc, price, stock, color, size } = Object.fromEntries(formData);
+  const { id, title,cat, desc, price, stock, color, size, inStock, images } = Object.fromEntries(formData);
   try {
     connectToDB();
 
@@ -72,6 +72,8 @@ export const updateProduct = async (formData) => {
       stock,
       color,
       size,
+      inStock,
+      images,
     };
     Object.keys(updateFields).forEach((key) => (updateFields[key] === "" || updateFields[key] === undefined) && delete updateFields[key]);
 
@@ -85,18 +87,18 @@ export const updateProduct = async (formData) => {
 };
 
 export const addProduct = async (formData) => {
-  const { title,cat, desc, price, stock, color, size } = Object.fromEntries(formData);
+  const { title, cat, desc, price, stock, color, inStock, size,} = Object.fromEntries(formData);
   
   try {
     connectToDB();
-    
     const newProduct = new Product({
       title,
       cat,
       desc,
-      price,
-      stock,
+      price: Number(price),
+      stock: Number(stock),
       color,
+      inStock: inStock === 'true',
       size,
     });
     await newProduct.save();
@@ -107,6 +109,9 @@ export const addProduct = async (formData) => {
   revalidatePath("/dashboard/products");
   redirect("/dashboard/products");
 };
+
+
+
 
 export const deleteProduct = async (formData) => {
   const { id } = Object.fromEntries(formData);

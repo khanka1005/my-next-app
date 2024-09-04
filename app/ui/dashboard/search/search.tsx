@@ -8,6 +8,8 @@ import { useDebouncedCallback } from 'use-debounce';
 import styles from './search.module.css';
 
 
+
+
 interface SearchProps {
   placeholder: string;
 }
@@ -35,6 +37,7 @@ const   Search: React.FC<SearchProps> = ({ placeholder }) => {
     <div className={styles.container}>
       <MdSearch />
       <input type="text" placeholder={placeholder} className={styles.input} onChange={handleSearch} />
+      
     </div>
   );
 };

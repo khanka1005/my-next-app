@@ -1,9 +1,9 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getAnalytics, isSupported } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCyMomQ446Q67H3VILeIOe8j_lyYdxbjMw",
   authDomain: "my-next-app-335b2.firebaseapp.com",
@@ -20,6 +20,9 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication
 export const auth = getAuth(app);
 
+// Initialize Firebase Storage
+export const storage = getStorage(app);
+
 // Check if analytics is supported before initializing
 if (typeof window !== "undefined" && window?.navigator?.cookieEnabled) {
   isSupported().then((supported) => {
@@ -34,3 +37,5 @@ if (typeof window !== "undefined" && window?.navigator?.cookieEnabled) {
 } else {
   console.warn("Analytics is not initialized because the window object is not available or cookies are disabled.");
 }
+
+export default app;

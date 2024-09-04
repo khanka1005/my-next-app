@@ -1,6 +1,7 @@
 /* Add this to your ProductView.module.css or a relevant CSS file */
 .searchContainer {
-  margin-bottom: 20px; /* Adjust space as needed */
+  margin-bottom: 20px; 
+  
 }
 
 .scrollContainer {

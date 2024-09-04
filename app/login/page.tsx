@@ -59,7 +59,7 @@ const LoginPage = () => {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Welcome to Our App</h1>
+        <h1 className={styles.title}>Нэвтрэх</h1>
         {loading ? (
           <p>Loading...</p>
         ) : !user ? (
@@ -94,19 +94,19 @@ const LoginPage = () => {
               type="submit"
               className={`${styles.button} ${styles.buttonBlue}`}
             >
-              {isSignUp ? "Sign Up" : "Login"}
+              {isSignUp ? "Хаяг үүсгэх" : "Нэвтрэх"}
             </button>
             <button
               type="button"
               onClick={handleGoogleSignIn}
               className={`${styles.button} ${styles.buttonRed}`}
             >
-              Sign in with Google
+              Google ашиглаж нэвтрэх
             </button>
-            <p className="text-sm"
+            <p className={styles.sign}
               onClick={() => setIsSignUp(!isSignUp)}
             >
-              {isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
+              {isSignUp ? "Хаягтай юу? Нэвтрэх" : "Хэрэглэгч үүсгэх?"}
             </p>
           </form>
         ) : null}

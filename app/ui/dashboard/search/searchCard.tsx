@@ -1,46 +1,55 @@
 "use client";
 
 import React, { Suspense } from 'react';
-import { MdSearch } from 'react-icons/md';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import { Input, Tooltip } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 
-import styles from './searchCard.module.css'; 
+import styles from './searchCard.module.css';
+
+const { Search } = Input;
 
 interface SearchCardProps {
   placeholder: string;
 }
 
 const SearchCard: React.FC<SearchCardProps> = ({ placeholder }) => {
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
+  const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const handleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const params = new URLSearchParams(searchParams.toString());
-    
-    if (e.target.value) {
-      if (e.target.value.length > 2) {
-        params.set("q", e.target.value);
-       
+  const handleSearch = useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value) {
+      if (value.length > 0) {
+        params.set("q", value);
       }
     } else {
       params.delete("q");
       params.delete("page");
-      
-      
     }
 
-    replace(`${pathname}?${params.toString()}`);
+    router.push(`${pathname}?${params.toString()}`,{ scroll: false });
   }, 300);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearch(e.target.value);
+  };
 
   return (
     <Suspense>
-    <div className={styles.container}>
-      
-      <input type="text" placeholder={placeholder} className={styles.input} onChange={handleSearch} />
-      <MdSearch className={styles.icon} />
-    </div>
+      <div className={styles.searchContainer}>
+        <Tooltip title="Search">
+          <Input
+            placeholder={placeholder}
+            onChange={handleInputChange}
+            size="large"
+            className={styles.searchInput}
+          />
+        </Tooltip>
+      </div>
     </Suspense>
   );
 };

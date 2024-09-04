@@ -1,0 +1,6 @@
+/* styles/ProductCard.module.css */
+
+.cardContainer:hover {
+    transform: scale(1.05); /* Scale up by 5% */
+  }
+  

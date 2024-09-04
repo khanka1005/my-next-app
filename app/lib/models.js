@@ -47,7 +47,7 @@ const productSchema = new mongoose.Schema({
     cat: {
         type: String,
         required: true,
-        unique: true,
+       
     },
     desc: {
         type: String,
@@ -72,6 +72,10 @@ const productSchema = new mongoose.Schema({
     size: {
         type: String,
     },
+    inStock:{
+        type:Boolean,
+    },
+   
 }, { timestamps: true });
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);

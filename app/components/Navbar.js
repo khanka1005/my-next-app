@@ -1,12 +1,13 @@
 "use client";
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
-import { FaShoppingBasket, FaSignInAlt, FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaShoppingBasket, FaSignInAlt} from 'react-icons/fa';
 import Image from 'next/image';
 import { Affix } from 'antd';
 
-import { useBasket } from '@/app/context/BasketContext'; // Adjust the path as necessary
+import Container  from '@/app/Container';
+import { useBasket } from '@/app/context/BasketContext'; 
 import styles from "@/app/components/ShopNavbar.module.css";
 
 
@@ -24,29 +25,15 @@ const ShopNavbar = () => {
   };
 
   return (
-    <div className={styles.mainContainer}>
-      {/* Background Image */}
-      <Image 
-      src="/main.jpg" 
-      alt="Main"
-      width={0}
-      height={0}
-      sizes="100vw"
-      style={{ width: '100%', height: 'auto' }}
-      className={styles.mainImage} />
- <Affix>
-      {/* Overlay Content */}
-      <div className={styles.overlay}>
+    <div>
+      
+ <Affix>      
         {/* Logo and Icons Container */}
         <div className={styles.logoAndIconsContainer}>
        
           <Navbar variant="light" expand="lg" className={styles.navbar}>
-            
-            <Container>
+           
               <Navbar.Brand href="/" className={styles.navbarBrand}>
-
-
-
                 <Image 
                 src="/logo.png"
                 width={0} 
@@ -55,9 +42,6 @@ const ShopNavbar = () => {
                 style={{ width: '180', height: 'auto' }} 
                 alt="Logo" 
                 className={styles.logo} />
-
-
-
 
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -77,16 +61,12 @@ const ShopNavbar = () => {
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
-            </Container>
+           
             
           </Navbar>
-          
         </div>
-       
-        {/* Social media icons */}
-        
-      </div>
       </Affix>
+      
     </div>
   );
 };

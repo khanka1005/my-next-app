@@ -2,10 +2,12 @@ import React from 'react';
 
 import { fetchAProducts } from '@/app/lib/data';
 import Search from '@/app/ui/dashboard/search/searchCard';
-import Scroll from '@/app/ui/dashboard/scroll/scroll';
+import Scroll from '@/app/scroll/scroll';
 import Category from '@/app/ui/dashboard/category/category';
+import Container  from '@/app/Container';
 
-import styles from './productView.module.css'; // Adjust the path as necessary
+import styles from './productView.module.css'; 
+
 
 interface SearchParams {
   page?: number;
@@ -38,12 +40,12 @@ const ProductView: React.FC<ProductViewProps> = async ({ searchParams }) => {
   }));
 
   return (
-    <div className="container">
+    <div>
+       
+      <Container>
       <div className="row">
-        <div className="col-md-3">
-          <Category />
-        </div>
-        <div className="col-md-9">
+        
+        <div>
           <div className={styles.searchContainer}>
             <Search placeholder="Search products..." />
           </div>
@@ -52,6 +54,7 @@ const ProductView: React.FC<ProductViewProps> = async ({ searchParams }) => {
           </div>
         </div>
       </div>
+      </Container>
     </div>
   );
 };

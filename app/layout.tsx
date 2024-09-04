@@ -2,7 +2,7 @@ import React from 'react';
 import { Inter } from "next/font/google";
 
 import { AuthContextProvider } from '@/app/context/AuthContext';
-import { BasketProvider } from '@/app/context/BasketContext'; // Import the BasketProvider
+import { BasketProvider } from '@/app/context/BasketContext'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ["latin"] });
