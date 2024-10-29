@@ -11,7 +11,7 @@ import { connectToDB } from "./utils";
 export const addUser = async (formData) => {
   const { username, email, password, phone, address, isAdmin, isActive } = Object.fromEntries(formData);
   try {
-    connectToDB();
+    
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -23,6 +23,7 @@ export const addUser = async (formData) => {
       address,
       isAdmin,
       isActive,
+      
     });
     await newUser.save();
   } catch (err) {
@@ -87,7 +88,7 @@ export const updateProduct = async (formData) => {
 };
 
 export const addProduct = async (formData) => {
-  const { title, cat, desc, price, stock, color, inStock, size,} = Object.fromEntries(formData);
+  const { title, cat, desc, price, stock, color, inStock, size,img} = Object.fromEntries(formData);
   
   try {
     connectToDB();
@@ -100,7 +101,9 @@ export const addProduct = async (formData) => {
       color,
       inStock: inStock === 'true',
       size,
+      img,
     });
+   
     await newProduct.save();
   } catch (err) {
     console.log(err);
@@ -155,3 +158,5 @@ export const authenticate = async (formData) => {
     throw err;
   }
 };
+
+export { connectToDB };

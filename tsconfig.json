@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/ui/dashboard/sidebar/menuLink/menuLink.jsx", "app/test/page.jsx", "app/productView/page.tsx", "app/components/page.js", "app/api/route/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/ui/dashboard/sidebar/menuLink/menuLink.jsx", "pages/test/page.jsx", "pages/productView/page.tsx", "pages/components/page.js", "pages/api/route/route.js"],
   "exclude": ["node_modules"]
 }
